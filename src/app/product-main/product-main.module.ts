@@ -14,6 +14,7 @@ import {
   AuthInterceptor,
   ParamInterceptor,
 } from "../common/service/interceptor.service";
+import { FiltersearchPipe } from "../common/pipes/filtersearch.pipe";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {
     ProductNavbarComponent,
     ProductMainComponent,
     ProductViewComponent,
+    FiltersearchPipe,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,10 @@
 <!-- @format -->
 
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <input class="form-control rounded" type="text" [(ngModel)]="titleSearch" placeholder="Search Here" />
+    </div>
+</div>
 <table class="table">
     <thead>
         <th>Product Id</th>
@@ -8,7 +13,7 @@
         <th>Action</th>
     </thead>
     <tbody>
-        <tr *ngFor="let product of productList">
+        <tr *ngFor="let product of productList | filtersearch: titleSearch">
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
             <td>{{ product.price }}</td>

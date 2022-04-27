@@ -12,10 +12,10 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./product-list.component.css"],
 })
 export class ProductListComponent implements OnInit {
-  productList: IProductData[] | null = null;
+  productList: IProductData[] = [];
   showAddProductForm = false;
   showProductListTable = true;
-
+  titleSearch: string = "";
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute

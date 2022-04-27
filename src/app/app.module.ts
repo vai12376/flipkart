@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { ProductMainModule } from "./product-main/product-main.module";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { HttpClientModule } from "@angular/common/http";
+import { FiltersearchPipe } from "./common/pipes/filtersearch.pipe";
 @NgModule({
   declarations: [AppComponent],
   imports: [

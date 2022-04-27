@@ -2,7 +2,7 @@
 
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+import { catchError, map, Observable, switchMap, throwError } from "rxjs";
 import { IProductData } from "../interfaces";
 import { environment } from "src/environments/environment";
 @Injectable({
