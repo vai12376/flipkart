@@ -1,6 +1,10 @@
 /** @format */
 
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, switchMap, throwError } from "rxjs";
 import { IProductData } from "../interfaces";
@@ -19,8 +23,13 @@ export class ProductsService {
       .pipe(catchError(this.handleError));
   }
   getAllProducts() {
+    let httpParams = new HttpParams({
+      fromObject: {
+        id: 1,
+      },
+    });
     return this.http
-      .get<IProductData[]>(this.url)
+      .get<IProductData[]>(this.url, { params: httpParams })
       .pipe(catchError(this.handleError));
   }
 

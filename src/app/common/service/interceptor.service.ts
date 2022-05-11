@@ -16,7 +16,7 @@ export class ParamInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const paramReq = req.clone({
-      params: req.params.set("userId", "5"),
+      params: req.params.append("userId", "5"),
     });
     return next.handle(paramReq);
   }
