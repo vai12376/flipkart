@@ -12,6 +12,7 @@ import { ProductViewComponent } from "./product-list/product-view/product-view.c
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {
   AuthInterceptor,
+  HttpErrorHandlingInterceptor,
   ParamInterceptor,
 } from "../common/service/interceptor.service";
 import { FiltersearchPipe } from "../common/pipes/filtersearch.pipe";
@@ -41,6 +42,11 @@ import { FiltersearchPipe } from "../common/pipes/filtersearch.pipe";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorHandlingInterceptor,
       multi: true,
     },
   ],

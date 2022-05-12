@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { isEmpty, Subscription } from "rxjs";
 import { IProductData } from "src/app/common/interfaces";
 import { ProductsService } from "src/app/common/service/products.service";
-import { environment } from "src/environments/environment";
+
 @Component({
   selector: "app-product-list",
   templateUrl: "./product-list.component.html",
@@ -30,7 +30,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
             .getProductByCategory(params["category"])
             .subscribe({
               next: (res) => {
-                console.log(res);
                 this.productList = res;
               },
               error: (error) => {
@@ -40,7 +39,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
         } else {
           this.productsService.getAllProducts().subscribe({
             next: (res) => {
-              console.log(res);
               this.productList = res;
             },
             error: (error) => {

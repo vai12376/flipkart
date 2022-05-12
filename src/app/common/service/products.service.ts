@@ -18,43 +18,27 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProductByCategory(category: any) {
-    return this.http
-      .get<IProductData[]>(this.url + `/category/${category}`)
-      .pipe(catchError(this.handleError));
-  }
-  getAllProducts() {
-    let httpParams = new HttpParams({
-      fromObject: {
-        id: 1,
-      },
-    });
-    return this.http
-      .get<IProductData[]>(this.url, { params: httpParams })
-      .pipe(catchError(this.handleError));
+    return this.http.get<IProductData[]>(this.url + `/category/${category}`);
   }
 
-  getProductById(id: number): Observable<any> {
-    return this.http
-      .get<IProductData>(this.url + `/${id}`)
-      .pipe(catchError(this.handleError));
+  getAllProducts() {
+    return this.http.get<IProductData[]>(this.url);
+  }
+
+  getProductById(id: number) {
+    return this.http.get<IProductData>(this.url + `/${id}`);
   }
 
   addProduct(product: IProductData) {
-    return this.http
-      .post<IProductData>(this.url, product)
-      .pipe(catchError(this.handleError));
+    return this.http.post<IProductData>(this.url, product);
   }
 
   deleteProduct(id: number) {
-    return this.http
-      .delete(this.url + `/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.delete(this.url + `/${id}`);
   }
 
   getCategories() {
-    return this.http
-      .get<string[]>(this.url + "/categories")
-      .pipe(catchError(this.handleError));
+    return this.http.get<string[]>(this.url + "/categories");
   }
 
   handleError(err: any) {
