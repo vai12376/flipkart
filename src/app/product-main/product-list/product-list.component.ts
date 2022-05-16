@@ -1,9 +1,9 @@
 /** @format */
 
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { isEmpty, Subscription } from "rxjs";
-import { IProductData } from "src/app/common/interfaces";
+import { IProductData } from "src/app/common/models/interfaces";
 import { ProductsService } from "src/app/common/service/products.service";
 
 @Component({
@@ -19,7 +19,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   queryParamsSubs: Subscription;
   constructor(
     private productsService: ProductsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,6 +40,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         } else {
           this.productsService.getAllProducts().subscribe({
             next: (res) => {
+              console.log(res);
               this.productList = res;
             },
             error: (error) => {
@@ -52,6 +54,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.queryParamsSubs.unsubscribe();
+  }
+
+  onEdit(product: any) {
+    this.router.navigate(["products", "add"], { state: { data: product } });
   }
 
   deleteProduct(id: number) {

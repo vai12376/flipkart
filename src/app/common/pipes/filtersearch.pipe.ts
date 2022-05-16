@@ -1,7 +1,7 @@
 /** @format */
 
 import { Pipe, PipeTransform } from "@angular/core";
-import { IProductData } from "../interfaces";
+import { IProductData } from "../models/interfaces";
 
 @Pipe({
   name: "filtersearch",

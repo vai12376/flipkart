@@ -18,8 +18,14 @@
             <td>{{ product.title }}</td>
             <td>{{ product.price }}</td>
             <td>
-                <button routerLink="/products/list/{{ product.id }}">View</button>
-                <button (click)="deleteProduct(product.id)">Delete</button>
+                <button class="btn btn-primary" routerLink="/products/list/{{ product.id }}">
+          View</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="onEdit(product)">Edit</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="deleteProduct(product.id)">
+          Delete
+        </button>
             </td>
         </tr>
     </tbody>

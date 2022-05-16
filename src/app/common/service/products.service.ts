@@ -7,8 +7,9 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, switchMap, throwError } from "rxjs";
-import { IProductData } from "../interfaces";
+import { IProductData } from "../models/interfaces";
 import { environment } from "src/environments/environment";
+import { IpcNetConnectOpts } from "net";
 @Injectable({
   providedIn: "root",
 })
@@ -28,7 +29,9 @@ export class ProductsService {
   getProductById(id: number) {
     return this.http.get<IProductData>(this.url + `/${id}`);
   }
-
+  editProduct(id: number, product: any) {
+    return this.http.put(this.url + `/${id}`, product);
+  }
   addProduct(product: IProductData) {
     return this.http.post<IProductData>(this.url, product);
   }
@@ -39,21 +42,5 @@ export class ProductsService {
 
   getCategories() {
     return this.http.get<string[]>(this.url + "/categories");
-  }
-
-  handleError(err: any) {
-    let errorMsg = "";
-    if (err instanceof HttpErrorResponse) {
-      console.log("server side error");
-      //server side error
-      errorMsg = `Server Error Code:${err.status} and Error message: ${err.message}`;
-    } else {
-      //client side error
-      console.log("client side error");
-      errorMsg = `Client Error :${err.error.message}`;
-    }
-    return throwError(() => {
-      return errorMsg;
-    });
   }
 }

@@ -3,9 +3,13 @@
 export interface IProductData {
   id: number;
   title: string;
+  image: string;
   price: number;
   description: string;
   category: string;
-  image: string;
-  rating: Object;
+  rating: IRating;
+}
+export interface IRating {
+  rate: number;
+  count: number;
 }

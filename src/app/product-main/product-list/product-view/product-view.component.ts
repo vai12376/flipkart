@@ -2,7 +2,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { IProductData } from "src/app/common/interfaces";
+import { IProductData } from "src/app/common/models/interfaces";
 import { ProductsService } from "src/app/common/service/products.service";
 
 @Component({

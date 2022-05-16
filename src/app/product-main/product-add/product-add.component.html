@@ -3,15 +3,15 @@
     <form [formGroup]="productForm" class="form-group" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Product Name:</label>
-            <input type="text" formControlName="name" class="form-control" />
+            <input type="text" formControlName="title" class="form-control" />
             <div *ngIf="
-          _productForm['name'].errors &&
-          (_productForm['name'].touched || formSubmited)
+          _productForm['title'].errors &&
+          (_productForm['title'].touched || formSubmited)
         " class="alert alert-danger">
-                <div *ngIf="_productForm['name'].errors?.['required']">
+                <div *ngIf="_productForm['title'].errors?.['required']">
                     Product Name required
                 </div>
-                <div *ngIf="_productForm['name'].errors?.['maxlength']">
+                <div *ngIf="_productForm['title'].errors?.['maxlength']">
                     maximum length is 256 characters for Product Name.
                 </div>
             </div>
@@ -26,72 +26,50 @@
                 Product Category is required
             </div>
         </div>
+
         <div class="form-group">
-            <label>Product Rate:</label>
-            <input type="number" formControlName="rate" class="form-control" />
+            <label>Product Price:</label>
+            <input class="form-control" type="number" formControlName="price" />
             <div *ngIf="
-          _productForm['rate'].errors &&
-          (_productForm['rate'].touched || formSubmited)
+          _productForm['price'].errors &&
+          (_productForm['price'].touched || formSubmited)
         " class="alert alert-danger">
-                <div class="invalid-box" *ngIf="_productForm['rate'].errors?.['required']">
-                    Product Rate is required
-                </div>
-                <div *ngIf="_productForm['rate'].errors?.['min']">
-                    rate should be minimum 1
+                <div *ngIf="_productForm['price'].errors?.['required']">
+                    Product price is required.
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label>Product Quantity:</label>
-            <span>{{ _productForm["quantity"].value }}</span
-      ><br />
-      <input type="range" min="1" max="999" formControlName="quantity" />
+            <label>Product Image:</label>
+            <input type="file" formControlName="image" accept="image/*" (change)="onFileChange($event)" />
 
-      <div
-        *ngIf="
-          _productForm['quantity'].errors &&
-          (_productForm['quantity'].touched || formSubmited)
-        "
-        class="alert alert-danger"
-      >
-        <div *ngIf="_productForm['quantity'].errors?.['required']">
-          Product Quantity is required
+            <img *ngIf="imageFile" class="img-thumbnail" [src]="imageUrl" />
+
+            <div class="text-danger" *ngIf="_productForm['image'].errors && _productForm['image'].touched">
+                <div *ngIf="_productForm['image'].errors?.['required']">
+                    Product Image is required.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Product Color:</label>
-      <input type="color" formControlName="color" class="form-control" />
-      <div
-        class="alert alert-danger"
-        *ngIf="_productForm['color'].errors?.['required'] && (_productForm['color'].touched || formSubmited)"
-      >
-        Product Color is required
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Product Description:</label>
-      <textarea formControlName="description" class="form-control"></textarea>
-      <div
-        *ngIf="
+        <div class="form-group">
+            <label>Product Description:</label>
+            <textarea formControlName="description" class="form-control"></textarea>
+            <div *ngIf="
           _productForm['description'].errors &&
-          (_productForm['description'].touched || formSubmited)
-        "
-        class="alert alert-danger"
-      >
-        <div *ngIf="_productForm['description'].errors?.['required']">
-          Product Description is required
+          _productForm['description'].touched
+        " class="text-danger">
+                <div *ngIf="_productForm['description'].errors?.['required']">
+                    Product Description is required
+                </div>
+                <div *ngIf="_productForm['description'].errors?.['maxlength']">
+                    maximum length is 512 characters
+                </div>
+            </div>
         </div>
-        <div *ngIf="_productForm['description'].errors?.['maxlength']">
-          maximum length is 512 characters
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit" id="addBtn">
+        <div class="form-group">
+            <button #addProductBtn class="btn btn-primary" type="submit" id="addBtn">
         Add Product
       </button>
-    </div>
-  </form>
+        </div>
+    </form>
 </div>
