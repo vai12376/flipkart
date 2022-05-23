@@ -1,0 +1,10 @@
+.navbar {
+    justify-content: space-between;
+}
+
+a {
+    display: inline;
+    padding-right: 3rem;
+    color: white;
+    ;
+}

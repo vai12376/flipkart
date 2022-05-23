@@ -1,0 +1,27 @@
+<!-- @format -->
+<div class="container">
+    <mat-card *ngIf="productData">
+        <mat-card-header>
+            <mat-card-title>{{ productData.title }}</mat-card-title>
+            <mat-card-subtitle>{{ productData.price | currency: "INR" }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="productData.image" />
+        <mat-card-content>
+            <p>
+                {{ productData.description }}
+            </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-flat-button (click)="onEdit(productData)">
+        <mat-icon>edit</mat-icon>
+      </button>
+            <button mat-flat-button (click)="deleteProduct(productData.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+            <button mat-flat-button (click)="deleteProduct(productData.id)">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

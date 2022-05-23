@@ -7,14 +7,17 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, switchMap, throwError } from "rxjs";
-import { IProductData } from "../models/interfaces";
+
 import { environment } from "src/environments/environment";
 import { IpcNetConnectOpts } from "net";
+import { IProductData } from "../../models/interfaces";
 @Injectable({
   providedIn: "root",
 })
 export class ProductsService {
   url = environment._baseUrl;
+
+  cartItems: number[];
 
   constructor(private http: HttpClient) {}
 
@@ -42,5 +45,9 @@ export class ProductsService {
 
   getCategories() {
     return this.http.get<string[]>(this.url + "/categories");
+  }
+
+  addProductToCart(id: number) {
+    this.cartItems.push(id);
   }
 }

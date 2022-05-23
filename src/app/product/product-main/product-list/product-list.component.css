@@ -1,0 +1,24 @@
+/* img {
+    background-size: cover;
+    max-height: 200px;
+} */
+
+.container {
+    padding-top: 10px;
+}
+
+mat-card {
+    height: 400px;
+}
+
+mat-card-header {
+    height: 150px;
+}
+
+img {
+    height: 150px;
+}
+
+mat-card-action {
+    height: 30px;
+}

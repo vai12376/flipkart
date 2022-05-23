@@ -1,7 +1,7 @@
 /** @format */
 
 import { Component, OnInit } from "@angular/core";
-import { ProductsService } from "src/app/common/service/products.service";
+import { ProductsService } from "src/app/common/services/product/product.service";
 
 @Component({
   selector: "app-product-navbar",

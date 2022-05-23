@@ -23,7 +23,7 @@ import {
   throwError,
 } from "rxjs";
 import { IProductData } from "src/app/common/models/interfaces";
-import { ProductsService } from "src/app/common/service/products.service";
+import { ProductsService } from "src/app/common/services/product/product.service";
 
 @Component({
   selector: "app-product-add",
@@ -105,6 +105,7 @@ export class ProductAddComponent implements OnInit, AfterViewInit {
       this.imageUrl = reader.result as string;
     };
   }
+
   onSubmit() {
     if (this.productForm.valid) {
       if (this.editFlag) {
@@ -133,6 +134,10 @@ export class ProductAddComponent implements OnInit, AfterViewInit {
           },
         });
       }
+    } else {
+      console.log("here");
+
+      this.productForm.markAllAsTouched();
     }
   }
 }

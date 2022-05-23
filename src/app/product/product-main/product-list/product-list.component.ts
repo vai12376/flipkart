@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { isEmpty, Subscription } from "rxjs";
 import { IProductData } from "src/app/common/models/interfaces";
-import { ProductsService } from "src/app/common/service/products.service";
+import { ProductsService } from "src/app/common/services/product/product.service";
 
 @Component({
   selector: "app-product-list",
@@ -54,20 +54,5 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.queryParamsSubs.unsubscribe();
-  }
-
-  onEdit(product: any) {
-    this.router.navigate(["products", "add"], { state: { data: product } });
-  }
-
-  deleteProduct(id: number) {
-    this.productsService.deleteProduct(id).subscribe({
-      next: (res) => {
-        alert("deleted succsesfully");
-      },
-      error: (error) => {
-        alert(error);
-      },
-    });
   }
 }

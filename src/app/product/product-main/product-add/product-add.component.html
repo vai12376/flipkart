@@ -1,13 +1,10 @@
 <!-- @format -->
-<div class="container-sm">
+<div class="container">
     <form [formGroup]="productForm" class="form-group" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Product Name:</label>
             <input type="text" formControlName="title" class="form-control" />
-            <div *ngIf="
-          _productForm['title'].errors &&
-          (_productForm['title'].touched || formSubmited)
-        " class="alert alert-danger">
+            <div *ngIf="_productForm['title'].errors && _productForm['title'].touched" class="text-danger">
                 <div *ngIf="_productForm['title'].errors?.['required']">
                     Product Name required
                 </div>
@@ -16,29 +13,28 @@
                 </div>
             </div>
         </div>
+        <br />
         <div class="form-group">
             <label>Product Category:</label>
             <select class="form-select" formControlName="category">
         <option value="">--select category--</option>
         <option *ngFor="let cat of categories">{{ cat }}</option>
       </select>
-            <div class="alert alert-danger" *ngIf="_productForm['category'].errors?.['required'] && (_productForm['category'].touched || formSubmited)">
+            <div class="text-danger" *ngIf="_productForm['category'].errors?.['required'] && _productForm['category'].touched">
                 Product Category is required
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             <label>Product Price:</label>
             <input class="form-control" type="number" formControlName="price" />
-            <div *ngIf="
-          _productForm['price'].errors &&
-          (_productForm['price'].touched || formSubmited)
-        " class="alert alert-danger">
+            <div *ngIf="_productForm['price'].errors && _productForm['price'].touched" class="text-danger">
                 <div *ngIf="_productForm['price'].errors?.['required']">
                     Product price is required.
                 </div>
             </div>
         </div>
+        <br />
         <div class="form-group">
             <label>Product Image:</label>
             <input type="file" formControlName="image" accept="image/*" (change)="onFileChange($event)" />
@@ -51,6 +47,7 @@
                 </div>
             </div>
         </div>
+        <br />
         <div class="form-group">
             <label>Product Description:</label>
             <textarea formControlName="description" class="form-control"></textarea>
@@ -66,8 +63,9 @@
                 </div>
             </div>
         </div>
+        <br />
         <div class="form-group">
-            <button #addProductBtn class="btn btn-primary" type="submit" id="addBtn">
+            <button mat-button #addProductBtn type="submit" id="addBtn">
         Add Product
       </button>
         </div>
