@@ -1,1 +1,23 @@
 <!-- @format -->
+<table class="table" *ngIf="productList.length">
+    <thead>
+        <th>Title</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of productList">
+            <td>{{ item.title }}</td>
+            <td>{{ item.price | currency: "INR" }}</td>
+            <td>
+                <button mat-button color="primary" routerLink="/product/list/{{ item.id }}">
+          View
+        </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            Total Amount:{{ totalAmount | currency: "INR" }}
+        </tr>
+    </tfoot>
+</table>

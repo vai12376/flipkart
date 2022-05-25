@@ -1,3 +1,6 @@
+/** @format */
+
 export const environment = {
-  production: true
+  production: true,
+  _baseUrl: "https://fakestoreapi.com/products",
 };

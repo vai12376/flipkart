@@ -16,9 +16,7 @@ import { IProductData } from "../../models/interfaces";
 })
 export class ProductsService {
   url = environment._baseUrl;
-
-  cartItems: number[];
-
+  cartItemCount = 0;
   constructor(private http: HttpClient) {}
 
   getProductByCategory(category: any) {
@@ -47,7 +45,7 @@ export class ProductsService {
     return this.http.get<string[]>(this.url + "/categories");
   }
 
-  addProductToCart(id: number) {
-    this.cartItems.push(id);
+  addToCart(id) {
+    this.cartItemCount++;
   }
 }

@@ -11,6 +11,11 @@
         <button mat-button routerLink="./add" (click)="onAddProduct()">
       add product
     </button>
+        <button mat-button routerLink="./add" (click)="navigateToCart()">
+      <span [matBadge]="cartItemCountSub | async">
+        <mat-icon>add_shopping_cart</mat-icon></span
+      >
+    </button>
     </div>
 </mat-toolbar>
 

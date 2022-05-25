@@ -1,0 +1,14 @@
+<!-- @format -->
+
+<div class="container">
+    <h1>Login As {{ role }}</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <label for="uname"><b>User Name</b></label>
+        <input formControlName="username" type="text" placeholder="User Name" name="email" required />
+        <br />
+        <label for="psw"><b>Password</b></label>
+        <input formControlName="password" type="password" placeholder="Enter Password" name="psw" required />
+
+        <button type="submit">Login</button>
+    </form>
+</div>
